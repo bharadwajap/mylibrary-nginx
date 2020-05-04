@@ -15,7 +15,6 @@ node(dockerAgent) {
 		}
 
 		stage('Dockerize') {
-			unstash 'workspace'
 			final String activeContainers = sh(script: "sudo docker ps", returnStdout: true)
 			boolean containerFound = activeContainers.toLowerCase().contains("${projectName}")
 			if (containerFound) {
