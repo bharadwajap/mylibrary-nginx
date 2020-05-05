@@ -15,7 +15,7 @@ node(dockerAgent) {
 		}
 
 		stage('Dockerize') {
-			final String activeContainers = sh(script: "sudo docker ps", returnStdout: true)
+			final String activeContainers = sh(script: "sudo docker ps -a", returnStdout: true)
 			boolean containerFound = activeContainers.toLowerCase().contains("${projectName}")
 			if (containerFound) {
 				sh "sudo docker stop ${projectName}"
